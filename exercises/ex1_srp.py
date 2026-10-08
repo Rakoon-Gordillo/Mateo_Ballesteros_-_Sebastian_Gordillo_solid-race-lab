@@ -40,12 +40,20 @@ class Car:
 
     def move(self) -> None:
         self.position += self.speed
-        # TODO(SRP): remove this print -- rendering is Track's job, not Car's.
+
+class RaceLogger:
+    def __init__(self):
+        self._entries = []
+    def record(self, tick, racers) -> None:
         print(f"{self.name} is now at {self.position}m")
-        # TODO(SRP): remove this -- logging is not Car's job either.
+
+    def save(self, path="race_log.txt"):
         with open("race_log.txt", "a", encoding="utf-8") as f:
             f.write(f"{self.name}={self.position}\n")
 
+    def entries(self) -> list[str]:
+        return self._entries
+        
 
 # TODO(SRP): write a RaceLogger class here (see the docstring above for
 # the exact methods it needs).
