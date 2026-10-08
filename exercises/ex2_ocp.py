@@ -24,6 +24,7 @@ Check your work:
     pytest tests/test_ex2_ocp.py -v
 """
 from engine.track import Track
+from random import randint
 
 
 class Vehicle:
@@ -57,8 +58,7 @@ class Motorcycle(Vehicle):
     symbol = "\U0001F3CD"
 
     def move(self) -> None:
-        # TODO(OCP): move forward by a varying, sometimes-large amount.
-        raise NotImplementedError("Implement Motorcycle.move()")
+        self.position += randint(1, 100);
 
 
 class Bicycle(Vehicle):
