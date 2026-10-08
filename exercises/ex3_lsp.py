@@ -66,9 +66,9 @@ class UnreliableCar(Vehicle):
         # Vehicle contract.
         roll = random.random()
         if roll < 0.15:
-            raise RuntimeError(f"{self.name} broke down!")
+            return  # stays in place
         elif roll < 0.30:
-            self.position -= 3  # ran out of gas and rolled back downhill
+            return  # stays in place
         else:
             self.position += 5
 
