@@ -67,11 +67,14 @@ class Bicycle(Vehicle):
     def __init__(self, name: str):
         super().__init__(name)
         # TODO(OCP): add any state you need to track fatigue over time.
+        self._fatigue = 0
 
     def move(self) -> None:
         # TODO(OCP): move forward by a shrinking amount as ticks go by
         # (never less than 1).
-        raise NotImplementedError("Implement Bicycle.move()")
+        self._fatigue += 1
+        step_size = max(1, 5 - self._fatigue)
+        self.position += step_size
 
 
 def main():
